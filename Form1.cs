@@ -19,19 +19,21 @@ namespace CheckBoxes
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (chkStarTrek.Checked && !chkStarWars.Checked)
-            {
-                lblResults.Text = "You like only Star Trek!";
-            }
-            else if (chkStarWars.Checked && !chkStarTrek.Checked)
-            {
-                lblResults.Text = "You like only Star Wars!";
-            }
-            else if (chkStarTrek.Checked && chkStarWars.Checked)
+            // The order of checks has been altered here from the lesson to me maximally efficient
+            if (chkStarTrek.Checked && chkStarWars.Checked) // Checks for both being checked. 
             {
                 lblResults.Text = "You are truly a person of culture.";
+                
             }
-            else
+            else if (chkStarWars.Checked)   // Since we already checked for both CheckBoxes being checked in the previous if statement,
+            {                               // we know that chkStarTrek is not checked at this point.
+                lblResults.Text = "You like only Star Wars!";
+            }
+            else if (chkStarTrek.Checked)   // Since we already checked for both CheckBoxes being checked in the first if statement,
+            {                               // we know that chkStarWars is not checked at this point.
+                lblResults.Text = "You like only Star Trek!";
+            }
+            else                            // No other possibilities remain.
             {
                 lblResults.Text = "You have much to learn.";
             }
